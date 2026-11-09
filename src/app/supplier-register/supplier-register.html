@@ -1,0 +1,100 @@
+<po-page-default p-title="Cadastro de Fornecedores">
+    <form [formGroup]="form">
+    <div class="po-row">
+        <po-input
+            class="po-md-4"
+            name="cnpj"
+            p-label="CNPJ"
+            p-placeholder="000.000.000/0000-00"
+            p-mask="99.999.999/9999-99"
+            p-required="true"
+            formControlName="cnpj">
+        </po-input>
+        <po-input
+            class="po-md-4"
+            name="razaoSocial"
+            p-label="Razão Social"
+            p-placeholder="Informe a razão social do fornecedor"
+            p-required="true"
+            formControlName="razaoSocial">
+        </po-input>
+        <po-input
+            class="po-md-4"
+            name="email"
+            p-label="Email"
+            p-placeholder="contato@fornecedor.com"
+            p-required="true"
+            formControlName="email">
+        </po-input>
+    </div>
+
+    <div class="po-row po-mt-1">
+        <po-input
+            class="po-md-3"
+            name="cep"
+            p-label="CEP"
+            p-placeholder="00000-000"
+            p-mask="99999-999"
+            formControlName="cep"
+            (p-change)="buscarCep()">
+        </po-input>
+
+        <po-input
+            class="po-md-9"
+            name="logradouro"
+            p-label="Logradouro / Rua"
+            p-placeholder="Rua, Avenida, Travessa..."
+            formControlName="logradouro">
+        </po-input>
+
+    </div>
+
+    <div class="po-row po-mt-1">
+
+        <po-input
+            class="po-md-5"
+            name="bairro"
+            p-label="Bairro"
+            p-placeholder="Informe o bairro do fornecedor"
+            formControlName="bairro">
+        </po-input>
+
+        <po-input
+            class="po-md-5"
+            name="cidade"
+            p-label="Cidade"
+            p-placeholder="Informe a cidade do fornecedor"
+            formControlName="cidade">
+        </po-input>
+
+        <po-input
+            class="po-md-2"
+            name="uf"
+            p-label="UF"
+            p-placeholder="SP - RJ - MG"
+            p-mask="AA"
+            formControlName="uf">
+        </po-input>
+
+    </div>
+
+    <div class="po-row po-mt-2">
+        <po-button
+            class="po-mr-1"
+            p-label="Salvar"
+            p-kind="primary"
+            [p-disabled]="form.invalid"
+            (p-click)="salvar()">
+        </po-button>
+
+        <po-button
+            p-label="Cancelar"
+            p-kind="secondary"
+            (p-click)="cancelar()">
+        </po-button>
+        
+
+    </div>
+    </form>
+    
+</po-page-default>

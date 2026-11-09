@@ -1,12 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SupplierRegister } from './supplier-register/supplier-register';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [CommonModule, SupplierRegister],
+  template: `<app-supplier-register></app-supplier-register>`,
 })
-export class App {
-  protected readonly title = signal('gestao-fornecedores');
-}
+export class App {}
