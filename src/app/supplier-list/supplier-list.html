@@ -1,0 +1,21 @@
+<po-page-default p-title="Fornecedores Cadastrados">
+  <div class="po-row po-mb-2">
+    <po-input
+      class="po-md-8"
+      name="termoBusca"
+      p-placeholder="Pesquisar por Razão Social, CNPJ ou Cidade..."
+      p-icon="an an-magnifying-glass"
+      [(ngModel)]="termoBusca"
+      (p-change-model)="filtrarFornecedores()"
+    >
+    </po-input>
+    <po-button
+      class="po-md-3"
+      p-label="Novo Fornecedor"
+      p-kind="primary"
+      (p-click)="novoFornecedor()"
+    >
+    </po-button>
+  </div>
+  <po-table [p-columns]="colunas" [p-items]="fornecedores"></po-table>
+</po-page-default>
