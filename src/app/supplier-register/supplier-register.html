@@ -1,100 +1,184 @@
 <po-page-default p-title="Cadastro de Fornecedores">
+  <po-container>
     <form [formGroup]="form">
-    <div class="po-row">
+      <po-divider p-label="Informações do Fornecedor"></po-divider>
+      <div class="po-row">
         <po-input
-            class="po-md-4"
-            name="cnpj"
-            p-label="CNPJ"
-            p-placeholder="000.000.000/0000-00"
-            p-mask="99.999.999/9999-99"
-            p-required="true"
-            formControlName="cnpj">
+          class="po-md-3"
+          name="cnpj"
+          p-label="CNPJ"
+          p-placeholder="00.000.000/0000-00"
+          p-mask="99.999.999/9999-99"
+          p-required="true"
+          formControlName="cnpj"
+          (p-change)="buscarCnpj()"
+        >
         </po-input>
         <po-input
-            class="po-md-4"
-            name="razaoSocial"
-            p-label="Razão Social"
-            p-placeholder="Informe a razão social do fornecedor"
-            p-required="true"
-            formControlName="razaoSocial">
-        </po-input>
-        <po-input
-            class="po-md-4"
-            name="email"
-            p-label="Email"
-            p-placeholder="contato@fornecedor.com"
-            p-required="true"
-            formControlName="email">
-        </po-input>
-    </div>
-
-    <div class="po-row po-mt-1">
-        <po-input
-            class="po-md-3"
-            name="cep"
-            p-label="CEP"
-            p-placeholder="00000-000"
-            p-mask="99999-999"
-            formControlName="cep"
-            (p-change)="buscarCep()">
+          class="po-md-5"
+          name="razaoSocial"
+          p-label="Razão Social"
+          p-placeholder="Informe a razão social do fornecedor"
+          p-required="true"
+          formControlName="razaoSocial"
+        >
         </po-input>
 
         <po-input
-            class="po-md-9"
-            name="logradouro"
-            p-label="Logradouro / Rua"
-            p-placeholder="Rua, Avenida, Travessa..."
-            formControlName="logradouro">
+          class="po-md-4"
+          name="nomeFantasia"
+          p-label="Nome Fantasia"
+          p-placeholder="Nome Fantasia"
+          formControlName="nomeFantasia"
+        >
         </po-input>
 
-    </div>
+        <po-select
+          class="po-md-5"
+          name="categoria"
+          p-label="Categoria"
+          p-placeholder="Selecione a categoria"
+          [p-options]="categoriaOpcoes"
+          formControlName="categoria"
+          p-required="true"
+        >
+        </po-select>
 
-    <div class="po-row po-mt-1">
+        <po-switch
+          class="po-md-3"
+          name="ativo"
+          p-label="Status do Fornecedor"
+          p-label-on="Ativo"
+          p-label-off="Inativo"
+          formControlName="ativo"
+        >
+        </po-switch>
+      </div>
+
+      <po-divider class="po-mt-2" p-label="Informações de Contato"></po-divider>
+
+      <div class="po-row">
+        <po-email
+          class="po-md-4"
+          name="email"
+          p-label="Email"
+          p-placeholder="contato@fornecedor.com"
+          p-required="true"
+          formControlName="email"
+        >
+        </po-email>
 
         <po-input
-            class="po-md-5"
-            name="bairro"
-            p-label="Bairro"
-            p-placeholder="Informe o bairro do fornecedor"
-            formControlName="bairro">
+          class="po-md-4"
+          name="telefone"
+          p-label="Telefone"
+          p-placeholder="(11) 91234-5678"
+          p-mask="(99) 99999-9999"
+          p-required="true"
+          formControlName="telefone"
+        >
+        </po-input>
+      </div>
+
+      <po-divider class="po-mt-2" p-label="Informações de Endereço"></po-divider>
+
+      <div class="po-row">
+        <po-input
+          class="po-md-2"
+          name="cep"
+          p-label="CEP"
+          p-placeholder="00000-000"
+          p-mask="99999-999"
+          formControlName="cep"
+          p-required="true"
+          (p-change)="buscarCep()"
+        >
         </po-input>
 
         <po-input
-            class="po-md-5"
-            name="cidade"
-            p-label="Cidade"
-            p-placeholder="Informe a cidade do fornecedor"
-            formControlName="cidade">
+          class="po-md-5"
+          name="logradouro"
+          p-label="Logradouro / Rua"
+          p-placeholder="Rua, Avenida, Travessa..."
+          p-required="true"
+          formControlName="logradouro"
+        >
         </po-input>
 
         <po-input
-            class="po-md-2"
-            name="uf"
-            p-label="UF"
-            p-placeholder="SP - RJ - MG"
-            p-mask="AA"
-            formControlName="uf">
+          class="po-md-2"
+          name="numero"
+          p-label="Número"
+          p-placeholder="122, S/N..."
+          formControlName="numero"
+          p-required="true"
+        >
+        </po-input>
+        <po-input
+          class="po-md-3"
+          name="complemento"
+          p-label="Complemento"
+          p-placeholder="Galpao 5AB..."
+          formControlName="complemento"
+        >
         </po-input>
 
-    </div>
+        <po-input
+          class="po-md-5"
+          name="bairro"
+          p-label="Bairro"
+          p-placeholder="Informe o bairro do fornecedor"
+          formControlName="bairro"
+          p-required="true"
+        >
+        </po-input>
 
-    <div class="po-row po-mt-2">
+        <po-input
+          class="po-md-5"
+          name="cidade"
+          p-label="Cidade"
+          p-placeholder="Informe a cidade do fornecedor"
+          formControlName="cidade"
+          p-required="true"
+        >
+        </po-input>
+
+        <po-input
+          class="po-md-2"
+          name="uf"
+          p-label="UF"
+          p-placeholder="SP - RJ - MG"
+          p-mask="AA"
+          formControlName="uf"
+          p-required="true"
+        >
+        </po-input>
+      </div>
+      <po-divider class="po-mt-2" p-label="Observações"></po-divider>
+      <div class="po-row">
+        <po-textarea
+          class="po-md-12"
+          name="observacoes"
+          p-label="Observações Gerais / Dados de Pagamento"
+          p-placeholder="Informe dados adicionais, chave PIX, horários de recebimento..."
+          [p-rows]="3"
+          formControlName="observacoes"
+        >
+        </po-textarea>
+      </div>
+
+      <div class="po-row po-mt-2">
         <po-button
-            class="po-mr-1"
-            p-label="Salvar"
-            p-kind="primary"
-            [p-disabled]="form.invalid"
-            (p-click)="salvar()">
+          class="po-mr-1"
+          p-label="Salvar"
+          p-kind="primary"
+          [p-disabled]="form.invalid"
+          (p-click)="salvar()"
+        >
         </po-button>
 
-        <po-button
-            p-label="Cancelar"
-            p-kind="secondary"
-            (p-click)="cancelar()">
-        </po-button>
-        
-
-    </div>
+        <po-button p-label="Cancelar" p-kind="secondary" (p-click)="cancelar()"> </po-button>
+      </div>
     </form>
-    
+  </po-container>
 </po-page-default>
