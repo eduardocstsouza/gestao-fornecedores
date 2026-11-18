@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SupplierRegister } from './supplier-register/supplier-register';
+import { RouterOutlet } from '@angular/router';
+import { PoMenuModule, PoToolbarModule, PoMenuItem } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, SupplierRegister],
-  template: `<app-supplier-register></app-supplier-register>`,
+  imports: [CommonModule, RouterOutlet, PoMenuModule, PoToolbarModule],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class App {}
+export class App {
+  menus: Array<PoMenuItem> = [
+    {label: 'Fornecedores', link: '/fornecedores', icon: 'an an-users'}, 
+    {label: 'Novo Fornecedor', link:'/fornecedores/novo', icon: 'an an-user-plus' }
+  
+  ]
+}
